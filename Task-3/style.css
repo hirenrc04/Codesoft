@@ -1,0 +1,140 @@
+:root {
+    --primary: #156da9;
+    --secondary: #2980b9;
+    --accent: #c92c1a;
+    --dark: #2c3e50;
+    --light: #57c9e6;
+    --display-bg: #fff8f8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.calculator {
+    width: 320px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: rgb(21, 27, 138);
+}
+
+.display {
+    padding: 25px 20px;
+    background-color: var(--display-bg);
+    color: rgb(43, 30, 30);
+    text-align: right;
+    position: relative;
+}
+
+.previous-operand {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    height: 20px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.current-operand {
+    font-size: 2.2rem;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    background-color: #fafaf9;
+}
+
+button {
+    border: none;
+    border-radius: 25px;
+
+    padding: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button.number {
+    background-color: white;
+}
+
+button.number:hover {
+    background-color: rgba(14, 234, 201, 0.5);
+    color: #fafaf9;
+    box-shadow: 0 10px 30px rgba(220, 227, 82, 1);
+
+}
+
+button.operator {
+    background-color: var(--light);
+    font-weight: 500;
+}
+
+button.operator:hover {
+    background-color: #d6e0e7;
+}
+
+button.equals {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+}
+
+button.equals:hover {
+    background-color: var(--secondary);
+}
+
+button.clear, button.delete {
+    background-color: var(--accent);
+    color: white;
+}
+
+button.clear:hover, button.delete:hover {
+    background-color: #c0392b;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+/* Special styling for the 0 button */
+button[data-number="0"] {
+    border-bottom-left-radius: 20px;
+}
+
+button.equals {
+    border-bottom-right-radius: 20px;
+}
+
+/* Add some animation to button presses */
+@keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+button:active {
+    animation: buttonPress 0.2s ease;
+}
